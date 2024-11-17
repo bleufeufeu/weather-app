@@ -1,0 +1,103 @@
+@font-face {
+    font-family: Quicksand;
+    src: url("../assets/fonts/Quicksand-Regular.ttf");
+}
+
+body {
+    font-family: Quicksand;
+    margin: 0;
+    text-align: center;
+    background-color: #1684A7;
+    color: #F6F6F6;
+}
+
+form {
+    background-color: #09A599;
+    padding: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-container {
+    position: relative;
+    width: 500px;
+}
+
+input, button {
+    font-family: Quicksand;
+    background-color: #F6F6F6;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 5px;
+}
+
+input:focus, button:focus {
+    outline: none;
+}
+
+input {
+    width: 100%;
+}
+
+input:-webkit-autofill {
+    background-color: #F6F6F6 !important;
+    color: inherit;
+    -webkit-box-shadow: 0 0 0px 1000px #F6F6F6 inset;
+    box-shadow: 0 0 0px 1000px #F6F6F6 inset;
+}
+
+input:-webkit-autofill:focus {
+    background-color: #F6F6F6 !important;
+    -webkit-box-shadow: 0 0 0px 1000px #F6F6F6 inset;
+    box-shadow: 0 0 0px 1000px #F6F6F6 inset;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    color: #09A599;
+    cursor: pointer;
+}
+
+#results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 2.5rem;
+}
+
+#result-location {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+#result-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#result-icon {
+    width: 60%;
+}
+
+#result-temp {
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+#result-extra {
+    font-size: 1.2rem;
+}
+
+#result-conditions {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
