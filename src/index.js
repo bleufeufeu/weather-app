@@ -12,6 +12,7 @@ import "./style.css";
 import { getWeather } from "./weatherAPI";
 
 const weatherForm = document.getElementById("search-box");
+let currentUnit = "C";
 
 weatherForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -51,7 +52,7 @@ const createResults = async (location) => {
 
         const resultTemp = document.createElement("div");
         resultTemp.id = "result-temp";
-        resultTemp.innerHTML = results.temp + "<span class='degree'>°C</span>";
+        resultTemp.innerHTML = results.temp + "<span class='degree'>°C</span> | <span class='secondary'>°F</span>";
 
         const resultConditions = document.createElement("div");
         resultConditions.id = "result-conditions";
@@ -85,6 +86,7 @@ const createResults = async (location) => {
 
         resultsContainer.appendChild(resultHeader);
         resultsContainer.appendChild(resultMain);
+        document.querySelector(".secondary").addEventListener("click", () => switchUnits(results));
     } catch (error) {
         return null;
     }
@@ -111,4 +113,24 @@ const getIcon = (icon) => {
         case "clear-night":
             return clnIcon;
     }
+}
+
+const switchUnits = (results) => {
+    let resultTemp = document.getElementById("result-temp");
+    let resultFeels = document.getElementById("result-feels");
+    let resultWind = document.getElementById("result-wind");
+
+    if (currentUnit === "C") {
+        resultTemp.innerHTML = results.tempUSA + "<span class='degree'>°F</span> | <span class='secondary'>°C</span>";
+        resultFeels.innerHTML = "Feels like " + results.feelsUSA + "<span class='degree'>°F</span>";
+        resultWind.innerHTML = "Wind: " + results.windUSA + "mph";
+        currentUnit = "F";
+    } else if (currentUnit === "F") {
+        resultTemp.innerHTML = results.temp + "<span class='degree'>°C</span> | <span class='secondary'>°F</span>";
+        resultFeels.innerHTML = "Feels like " + results.feels + "<span class='degree'>°C</span>";
+        resultWind.innerHTML = "Wind: " + results.wind + "km/h";
+        currentUnit = "C";
+    }
+
+    document.querySelector(".secondary").addEventListener("click", () => switchUnits(results));
 }

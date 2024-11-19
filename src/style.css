@@ -101,3 +101,8 @@ button {
     font-weight: 500;
     margin-bottom: 15px;
 }
+
+.secondary {
+    font-weight: 100;
+    opacity: 0.5;
+}
